@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naufal Hadi Darmawan | AI & Data Enthusiast</title>
+    
+    <!-- Tailwind CSS & Alpine JS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom styles to apply the Persona 5 font */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #100a0a; /* A very dark red, almost black */
+            color: #f0f0f0;
+        }
+        .font-p5 {
+            font-family: 'Anton', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        /* A clip-path to create the iconic diagonal shapes */
+        .diagonal-clip {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        .diagonal-clip-bottom {
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+        }
+        /* Custom animation for the intro */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-fade-in-scale {
+            animation: fadeInScale 1s ease-out forwards;
+        }
+        /* Scroll-triggered animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden" x-data="{ projectModalOpen: false, projectModalData: {}, certModalOpen: false, certModalData: {} }">
+
+    <!-- Header & Navigation -->
+    <header x-data="{ isOpen: false, atTop: true }" @scroll.window="atTop = (window.pageYOffset < 50)" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" :class="{ 'bg-black bg-opacity-80 backdrop-blur-sm': !atTop, 'bg-transparent': atTop }">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-p5 text-2xl text-red-500">Naufal Hadi D.</a>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-red-500 transition duration-300">About Me</a>
+                <a href="#experience" class="hover:text-red-500 transition duration-300">Experience</a>
+                <a href="#projects" class="hover:text-red-500 transition duration-300">Projects</a>
+                <a href="#certificates" class="hover:text-red-500 transition duration-300">Certificates</a>
+                <a href="#contact" class="hover:text-red-500 transition duration-300">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button @click="isOpen = !isOpen" class="md:hidden z-50 text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div x-show="isOpen" @click.away="isOpen = false" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full" class="fixed top-0 left-0 h-full w-2/3 bg-red-600 md:hidden p-8 space-y-6 z-40">
+            <a @click="isOpen = false" href="#about" class="block font-p5 text-2xl text-black">About Me</a>
+            <a @click="isOpen = false" href="#experience" class="block font-p5 text-2xl text-black">Experience</a>
+            <a @click="isOpen = false" href="#projects" class="block font-p5 text-2xl text-black">Projects</a>
+            <a @click="isOpen = false" href="#certificates" class="block font-p5 text-2xl text-black">Certificates</a>
+            <a @click="isOpen = false" href="#contact" class="block font-p5 text-2xl text-black">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center justify-center bg-black diagonal-clip" style="background-image: url('https://www.transparenttextures.com/patterns/stardust.png');">
+            <div class="text-center p-6 animate-fade-in-scale">
+                <h1 class="font-p5 text-5xl md:text-8xl text-red-600 mb-4">Building the Future</h1>
+                <h2 class="font-p5 text-3xl md:text-5xl mb-4">with Artificial Intelligence</h2>
+                <p class="max-w-2xl mx-auto text-lg md:text-xl text-gray-300">
+                    I'm Naufal Hadi Darmawan, a final-year Software Engineering student dedicated to advancing knowledge in AI and data science.
+                </p>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-20 bg-gray-900 diagonal-clip-bottom">
+            <div class="container mx-auto px-6 reveal">
+                <h2 class="font-p5 text-4xl text-center mb-12">About Me</h2>
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/3">
+                        <img src="images/pp.jpg" alt="Naufal Hadi Darmawan" class="rounded-lg shadow-lg border-4 border-red-600">
+                    </div>
+                    <div class="md:w-2/3">
+                        <p class="text-lg mb-4">
+                            As a final-year Software Engineering student at Universitas Pendidikan Indonesia, I have a deep passion for AI and data science. I am experienced in data analysis, predictive modeling, computer vision, recommendation systems, sentiment analysis, generative AI, and LLM engineering.
+                        </p>
+                        <p class="text-lg mb-4">
+                            I am a quick and adaptive learner, effective both independently and in team environments. My mission is to apply technology to create real impact and drive innovation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section id="experience" class="py-20" style="background-image: url('https://www.transparenttextures.com/patterns/stardust.png');">
+            <div class="container mx-auto px-6 reveal">
+                <h2 class="font-p5 text-4xl text-center mb-12">Work Experience</h2>
+                <div class="space-y-8 max-w-4xl mx-auto">
+                    <!-- PT Kilang Pertamina Internasional -->
+                    <div class="bg-red-600 text-black p-6 flex items-center gap-6 transform hover:scale-105 transition-transform duration-300">
+                        <div class="w-16 h-16 bg-black flex items-center justify-center font-p5 text-red-500 text-3xl shrink-0">AI</div>
+                        <div class="flex-1">
+                            <h3 class="font-p5 text-xl">AI Engineer Intern – PT Kilang Pertamina Internasional</h3>
+                            <p class="text-sm font-bold">Feb 2025 – May 2025</p>
+                            <p class="text-sm mt-2">Designed an intelligent automation system to extract information from PDF documents, improving the Multimedia team's operational efficiency by 50% using a RAG architecture, LangChain, and GPT-4o-mini.</p>
+                        </div>
+                    </div>
+                    <!-- Home Credit Indonesia -->
+                    <div class="bg-red-600 text-black p-6 flex items-center gap-6 transform hover:scale-105 transition-transform duration-300">
+                        <div class="w-16 h-16 bg-black flex items-center justify-center font-p5 text-red-500 text-3xl shrink-0">DS</div>
+                        <div class="flex-1">
+                            <h3 class="font-p5 text-xl">Data Scientist Intern – Home Credit Indonesia</h3>
+                            <p class="text-sm font-bold">Feb 2025 – Mar 2025</p>
+                            <p class="text-sm mt-2">Gained hands-on experience through real-world case studies, applying SQL, Python, and Machine Learning to solve an end-to-end scorecard modeling challenge.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6 reveal">
+                <h2 class="font-p5 text-4xl text-center mb-12">Project Showcase</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Card 1: VentureMind -->
+                    <div @click="projectModalOpen = true; projectModalData = { title: 'VentureMind — AI Business Co-Pilot', desc: 'Designed a multi-agent AI system using CrewAI & GPT-4.1-mini, where agents with specialized roles (Visionary, Analyst, Critic) collaborate to generate comprehensive business strategy reports. Integrated RAG with the Tavily Search API for real-time market data and built a long-term memory system.', tech: ['Python', 'FastAPI', 'CrewAI', 'PostgreSQL', 'Docker'], link: 'https://github.com/NaufalHD12/venture-mind' }" class="bg-black overflow-hidden cursor-pointer group">
+                        <div class="relative">
+                            <img src="images/venturemind.png" alt="VentureMind Project" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                        </div>
+                        <div class="p-4 border-t-4 border-red-600">
+                            <h3 class="font-p5 text-xl text-white">VentureMind</h3>
+                            <p class="text-red-400 text-sm mt-1">AI Agent System</p>
+                        </div>
+                    </div>
+                    <!-- Project Card 2: Synapsis AI -->
+                    <div @click="projectModalOpen = true; projectModalData = { title: 'Synapsis AI — Smart CV Screening', desc: 'Built an intelligent screening system to analyze job descriptions against dozens of CVs simultaneously (English & Indonesian). Developed a multi-language NLP pipeline with the DeepSeek API to generate matching scores and in-depth analysis.', tech: ['Python', 'Flask', 'PyMuPDF', 'Pandas', 'DeepSeek API'], link: 'https://github.com/NaufalHD12/synapsis-ai' }" class="bg-black overflow-hidden cursor-pointer group">
+                        <div class="relative">
+                            <img src="images/synapsis.png" alt="Synapsis AI Project" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                        </div>
+                        <div class="p-4 border-t-4 border-red-600">
+                            <h3 class="font-p5 text-xl text-white">Synapsis AI</h3>
+                            <p class="text-red-400 text-sm mt-1">Intelligent Recruitment System</p>
+                        </div>
+                    </div>
+                    <!-- Project Card 3: AcneScan -->
+                    <div @click="projectModalOpen = true; projectModalData = { title: 'AcneScan — Acne Detection App', desc: 'As an ML Engineer, trained a CNN model with TensorFlow to detect and classify acne types from images. Developed and deployed a containerized Flask API on Google Cloud Run for real-time inference.', tech: ['TensorFlow', 'CNN', 'Flask', 'Docker', 'Google Cloud Run'], link: 'https://github.com/Acne-Scan' }" class="bg-black overflow-hidden cursor-pointer group">
+                        <div class="relative">
+                            <img src="images/AcneScanApp.png" alt="AcneScan Project" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                        </div>
+                        <div class="p-4 border-t-4 border-red-600">
+                            <h3 class="font-p5 text-xl text-white">AcneScan</h3>
+                            <p class="text-red-400 text-sm mt-1">Computer Vision</p>
+                        </div>
+                    </div>
+                    <!-- Project Card 4: Anime Recommendation System -->
+                    <div @click="projectModalOpen = true; projectModalData = { title: 'Anime Recommendation System', desc: 'Developed a robust recommendation system using Content-Based and Collaborative Filtering. The system helps users discover new anime by analyzing metadata and user ratings, achieving high precision and low prediction error.', tech: ['Python', 'TensorFlow', 'Scikit-learn', 'Pandas'], link: 'https://github.com/NaufalHD12/anime-recommendation-system' }" class="bg-black overflow-hidden cursor-pointer group">
+                        <div class="relative">
+                            <img src="images/AniRec.png" alt="Anime Recommendation System Project" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                        </div>
+                        <div class="p-4 border-t-4 border-red-600">
+                            <h3 class="font-p5 text-xl text-white">Anime Recommendation System</h3>
+                            <p class="text-red-400 text-sm mt-1">Machine Learning</p>
+                        </div>
+                    </div>
+                    <!-- Project Card 5: Student Performance Predictor -->
+                    <div @click="projectModalOpen = true; projectModalData = { title: 'Student Performance Predictor', desc: 'Built a regression model to accurately predict students’ final grades based on demographic, behavioral, and academic features. Identified key predictors of student performance to help improve academic outcomes, with CatBoost as the best performing model.', tech: ['Python', 'Scikit-learn', 'Pandas', 'CatBoost', 'XGBoost'], link: 'https://github.com/NaufalHD12/student-performance-predictor' }" class="bg-black overflow-hidden cursor-pointer group">
+                        <div class="relative">
+                            <img src="images/StudPerf.png" alt="Student Performance Predictor Project" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                        </div>
+                        <div class="p-4 border-t-4 border-red-600">
+                            <h3 class="font-p5 text-xl text-white">Student Performance Predictor</h3>
+                            <p class="text-red-400 text-sm mt-1">Predictive Modeling</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Certificate Showcase Section -->
+        <section id="certificates" class="py-20" style="background-image: url('https://www.transparenttextures.com/patterns/stardust.png');">
+            <div class="container mx-auto px-6 reveal">
+                <h2 class="font-p5 text-4xl text-center mb-12">Certificates</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Certificate 1: Bangkit -->
+                    <div @click="certModalOpen = true; certModalData = { title: 'Bangkit Academy 2024', img: 'images/bangkit.png' }" class="bg-black overflow-hidden cursor-pointer group">
+                        <div class="relative">
+                            <img src="images/bangkit.png" alt="Bangkit Certificate" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                                <p class="font-p5 text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Certificate</p>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t-4 border-red-600">
+                            <h3 class="font-p5 text-xl text-white">Bangkit Academy 2024 - Machine Learning Path</h3>
+                            <p class="text-red-400 text-sm mt-1">Google, GoTo, Tokopedia, Traveloka</p>
+                        </div>
+                    </div>
+                    <div @click="certModalOpen = true; certModalData = { title: 'Generative AI for Everyone', img: 'images/genai.png' }" class="bg-black overflow-hidden cursor-pointer group">
+                        <div class="relative">
+                            <img src="images/genai.png" alt="Generative AI for Everyone" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                                <p class="font-p5 text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Certificate</p>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t-4 border-red-600">
+                            <h3 class="font-p5 text-xl text-white">Generative AI for Everyone</h3>
+                            <p class="text-red-400 text-sm mt-1">Google, GoTo, Tokopedia, Traveloka</p>
+                        </div>
+                    </div>
+                    <div @click="certModalOpen = true; certModalData = { title: 'Machine Learning', img: 'images/ml.png' }" class="bg-black overflow-hidden cursor-pointer group">
+                        <div class="relative">
+                            <img src="images/ml.png" alt="Machine Learning" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                                <p class="font-p5 text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Certificate</p>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t-4 border-red-600">
+                            <h3 class="font-p5 text-xl text-white">Machine Learning</h3>
+                            <p class="text-red-400 text-sm mt-1">DeepLearning.AI & Stanford University</p>
+                        </div>
+                    </div>
+                    <div @click="certModalOpen = true; certModalData = { title: 'DeepLearning.AI TensorFlow Developer', img: 'images/dl.png' }" class="bg-black overflow-hidden cursor-pointer group">
+                        <div class="relative">
+                            <img src="images/dl.png" alt="DeepLearning.AI TensorFlow Developer" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                                <p class="font-p5 text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Certificate</p>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t-4 border-red-600">
+                            <h3 class="font-p5 text-xl text-white">DeepLearning.AI TensorFlow Developer</h3>
+                            <p class="text-red-400 text-sm mt-1">DeepLearning.AI</p>
+                        </div>
+                    </div>
+                    <div @click="certModalOpen = true; certModalData = { title: 'Tensorflow: Data and Deployment', img: 'images/tfdepl.png' }" class="bg-black overflow-hidden cursor-pointer group">
+                        <div class="relative">
+                            <img src="images/tfdepl.png" alt="Tensorflow: Data and Deployment" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                                <p class="font-p5 text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Certificate</p>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t-4 border-red-600">
+                            <h3 class="font-p5 text-xl text-white">Tensorflow: Data and Deployment</h3>
+                            <p class="text-red-400 text-sm mt-1">DeepLearning.AI</p>
+                        </div>
+                    </div>
+                    <div @click="certModalOpen = true; certModalData = { title: 'Machine Learning Terapan', img: 'images/mlterapan.png' }" class="bg-black overflow-hidden cursor-pointer group">
+                        <div class="relative">
+                            <img src="images/mlterapan.png" alt="Machine Learning Terapan" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                                <p class="font-p5 text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Certificate</p>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t-4 border-red-600">
+                            <h3 class="font-p5 text-xl text-white">Machine Learning Terapan</h3>
+                            <p class="text-red-400 text-sm mt-1">Dicoding Indonesia</p>
+                        </div>
+                    </div>
+                    <div @click="certModalOpen = true; certModalData = { title: 'Machine Learning Operations (MLOps)', img: 'images/mlops.png' }" class="bg-black overflow-hidden cursor-pointer group">
+                        <div class="relative">
+                            <img src="images/mlops.png" alt="Machine Learning Operations (MLOps)" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                                <p class="font-p5 text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Certificate</p>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t-4 border-red-600">
+                            <h3 class="font-p5 text-xl text-white">Machine Learning Operations (MLOps)</h3>
+                            <p class="text-red-400 text-sm mt-1">Dicoding Indonesia</p>
+                        </div>
+                    </div>
+                    <div @click="certModalOpen = true; certModalData = { title: 'Belajar Analisis Data dengan Python', img: 'images/analisisdata.png' }" class="bg-black overflow-hidden cursor-pointer group">
+                        <div class="relative">
+                            <img src="images/analisisdata.png" alt="Belajar Analisis Data dengan Python" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                                <p class="font-p5 text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Certificate</p>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t-4 border-red-600">
+                            <h3 class="font-p5 text-xl text-white">Belajar Analisis Data dengan Python</h3>
+                            <p class="text-red-400 text-sm mt-1">Dicoding Indonesia</p>
+                        </div>
+                    </div>
+                    <div @click="certModalOpen = true; certModalData = { title: 'Belajar Dasar Data Science', img: 'images/dasards.png' }" class="bg-black overflow-hidden cursor-pointer group">
+                        <div class="relative">
+                            <img src="images/dasards.png" alt="Belajar Dasar Data Science" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                                <p class="font-p5 text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Certificate</p>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t-4 border-red-600">
+                            <h3 class="font-p5 text-xl text-white">Belajar Dasar Data Science</h3>
+                            <p class="text-red-400 text-sm mt-1">Dicoding Indonesia</p>
+                        </div>
+                    </div>
+                    <div @click="certModalOpen = true; certModalData = { title: 'Belajar Dasar Git dengan Github', img: 'images/git.png' }" class="bg-black overflow-hidden cursor-pointer group">
+                        <div class="relative">
+                            <img src="images/git.png" alt="Belajar Dasar Git dengan Github" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                                <p class="font-p5 text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Certificate</p>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t-4 border-red-600">
+                            <h3 class="font-p5 text-xl text-white">Belajar Dasar Git dengan Github</h3>
+                            <p class="text-red-400 text-sm mt-1">Dicoding Indonesia</p>
+                        </div>
+                    </div>
+                    <div @click="certModalOpen = true; certModalData = { title: 'Belajar Dasar Structured Query Language (SQL)', img: 'images/sql.png' }" class="bg-black overflow-hidden cursor-pointer group">
+                        <div class="relative">
+                            <img src="images/sql.png" alt="Belajar Dasar Structured Query Language (SQL)" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                                <p class="font-p5 text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Certificate</p>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t-4 border-red-600">
+                            <h3 class="font-p5 text-xl text-white">Belajar Dasar Structured Query Language (SQL)</h3>
+                            <p class="text-red-400 text-sm mt-1">Dicoding Indonesia</p>
+                        </div>
+                    </div>
+                    <div @click="certModalOpen = true; certModalData = { title: 'Full Stack Web Development', img: 'images/django.png' }" class="bg-black overflow-hidden cursor-pointer group">
+                        <div class="relative">
+                            <img src="images/django.png" alt="Django Full Stack Certificate" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                                <p class="font-p5 text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Certificate</p>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t-4 border-red-600">
+                            <h3 class="font-p5 text-xl text-white">Full Stack Web Development with Django 5, Tailwind & HTMX</h3>
+                            <p class="text-red-400 text-sm mt-1">Jose Salvatierra on Udemy</p>
+                        </div>
+                    </div>
+                    <div @click="certModalOpen = true; certModalData = { title: 'LLM Engineering: Master AI, Large Language Models & Agents', img: 'https://placehold.co/600x400/e53e3e/1a202c?text=Coming+Soon' }" class="bg-black overflow-hidden cursor-pointer group">
+                        <div class="relative">
+                            <img src="https://placehold.co/600x400/e53e3e/1a202c?text=Coming+Soon" alt="Django Full Stack Certificate" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                                <p class="font-p5 text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">View Certificate</p>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t-4 border-red-600">
+                            <h3 class="font-p5 text-xl text-white">LLM Engineering: Master AI, Large Language Models & Agents</h3>
+                            <p class="text-red-400 text-sm mt-1"> Ligency Team and Ed Donner on Udemy</p>
+                        </div>
+                    </div>
+                    <!-- Add more certificates as needed -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gray-900 text-center">
+            <div class="container mx-auto px-6 reveal">
+                <h2 class="font-p5 text-4xl mb-4">Get In Touch</h2>
+                <p class="max-w-xl mx-auto mb-8 text-gray-300">
+                    I am currently seeking new opportunities and am open to collaboration. If you have a project in mind or just want to connect, I'd love to hear from you.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="mailto:hadinaufal06@gmail.com" class="bg-red-600 text-black font-p5 py-3 px-8 hover:bg-white transition duration-300">Email</a>
+                    <a href="https://www.linkedin.com/in/naufalhd12/" target="_blank" class="bg-gray-700 text-white font-p5 py-3 px-8 hover:bg-white hover:text-black transition duration-300">LinkedIn</a>
+                    <a href="https://github.com/NaufalHD12" target="_blank" class="bg-gray-700 text-white font-p5 py-3 px-8 hover:bg-white hover:text-black transition duration-300">GitHub</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-black py-6 text-center text-sm text-gray-500">
+        <p>&copy; 2024 Naufal Hadi Darmawan. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Project Modal -->
+    <div x-show="projectModalOpen" style="display: none;" @keydown.escape.window="projectModalOpen = false" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center p-4 z-50" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+        <div class="bg-gray-900 p-8 max-w-2xl w-full relative border-2 border-red-600 shadow-lg shadow-red-600/20" @click.away="projectModalOpen = false">
+            <button @click="projectModalOpen = false" class="absolute -top-3 -right-3 bg-white text-black rounded-full w-8 h-8 font-bold text-xl">&times;</button>
+            <h3 class="text-3xl font-p5 text-white" x-text="projectModalData.title"></h3>
+            <p class="mt-4 text-gray-300" x-text="projectModalData.desc"></p>
+            <div class="mt-6">
+                <p class="font-bold text-white">Technologies Used:</p>
+                <div class="flex flex-wrap gap-2 mt-2">
+                    <template x-for="tech in projectModalData.tech" :key="tech">
+                        <span class="bg-red-600 text-black text-sm font-semibold px-3 py-1" x-text="tech"></span>
+                    </template>
+                </div>
+            </div>
+            <div class="mt-8">
+                <a :href="projectModalData.link" target="_blank" class="bg-red-600 text-black font-p5 py-2 px-6 hover:bg-white transition duration-300">View Project</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Certificate Modal -->
+    <div x-show="certModalOpen" style="display: none;" @keydown.escape.window="certModalOpen = false" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center p-4 z-50" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+        <div class="bg-gray-900 p-4 max-w-4xl w-full relative border-2 border-red-600 shadow-lg shadow-red-600/20" @click.away="certModalOpen = false">
+            <button @click="certModalOpen = false" class="absolute -top-3 -right-3 bg-white text-black rounded-full w-8 h-8 font-bold text-xl">&times;</button>
+            <h3 class="text-2xl font-p5 text-white text-center mb-4" x-text="certModalData.title"></h3>
+            <div class="aspect-w-16 aspect-h-9">
+                <img :src="certModalData.img" :alt="certModalData.title" class="w-full h-full object-contain">
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
