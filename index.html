@@ -155,7 +155,7 @@
                 <h2 class="font-p5 text-4xl text-center mb-12">Project Showcase</h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Project Card 1: VentureMind -->
-                    <div @click="projectModalOpen = true; projectModalData = { title: 'VentureMind — AI Business Co-Pilot', desc: 'Designed a multi-agent AI system using CrewAI & GPT-4.1-mini, where agents with specialized roles (Visionary, Analyst, Critic) collaborate to generate comprehensive business strategy reports. Integrated RAG with the Tavily Search API for real-time market data and built a long-term memory system.', tech: ['Python', 'FastAPI', 'CrewAI', 'PostgreSQL', 'Docker', 'OpenAI API'], link: 'https://github.com/NaufalHD12/venture-mind' }" class="bg-black overflow-hidden cursor-pointer group">
+                    <div @click="projectModalOpen = true; projectModalData = { title: 'VentureMind — AI Business Co-Pilot', desc: 'Designed a multi-agent AI system using CrewAI & GPT-4.1-mini, where agents with specialized roles (Visionary, Analyst, Critic) collaborate to generate comprehensive business strategy reports. Integrated RAG with the Tavily Search API for real-time market data and built a long-term memory system.', tech: ['Python', 'FastAPI', 'CrewAI', 'PostgreSQL', 'Docker', 'OpenAI API', 'GitHub'], link: 'https://github.com/NaufalHD12/venture-mind' }" class="bg-black overflow-hidden cursor-pointer group">
                         <div class="relative">
                             <img src="images/venturemind.png" alt="VentureMind Project" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
                             <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300"></div>
@@ -166,7 +166,7 @@
                         </div>
                     </div>
                     <!-- Project Card 2: Synapsis AI -->
-                    <div @click="projectModalOpen = true; projectModalData = { title: 'Synapsis AI — Smart CV Screening', desc: 'Built an intelligent screening system to analyze job descriptions against dozens of CVs simultaneously (English & Indonesian). Developed a multi-language NLP pipeline with the DeepSeek API to generate matching scores and in-depth analysis.', tech: ['Python', 'Flask', 'PyMuPDF', 'Pandas', 'DeepSeek API'], link: 'https://github.com/NaufalHD12/synapsis-ai' }" class="bg-black overflow-hidden cursor-pointer group">
+                    <div @click="projectModalOpen = true; projectModalData = { title: 'Synapsis AI — Smart CV Screening', desc: 'Built an intelligent screening system to analyze job descriptions against dozens of CVs simultaneously (English & Indonesian). Developed a multi-language NLP pipeline with the DeepSeek API to generate matching scores and in-depth analysis.', tech: ['Python', 'Flask', 'PyMuPDF', 'Pandas', 'DeepSeek API', 'GitHub'], link: 'https://github.com/NaufalHD12/synapsis-ai' }" class="bg-black overflow-hidden cursor-pointer group">
                         <div class="relative">
                             <img src="images/synapsis.png" alt="Synapsis AI Project" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
                             <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300"></div>
@@ -177,7 +177,7 @@
                         </div>
                     </div>
                     <!-- Project Card 3: AcneScan -->
-                    <div @click="projectModalOpen = true; projectModalData = { title: 'AcneScan — Acne Detection App', desc: 'As an ML Engineer, trained a CNN model with TensorFlow to detect and classify acne types from images. Developed and deployed a containerized Flask API on Google Cloud Run for real-time inference.', tech: ['TensorFlow', 'CNN', 'Flask', 'Docker', 'Google Cloud Run'], link: 'https://github.com/Acne-Scan' }" class="bg-black overflow-hidden cursor-pointer group">
+                    <div @click="projectModalOpen = true; projectModalData = { title: 'AcneScan — Acne Detection App', desc: 'As an ML Engineer, trained a CNN model with TensorFlow to detect and classify acne types from images. Developed and deployed a containerized Flask API on Google Cloud Run for real-time inference.', tech: ['TensorFlow', 'CNN', 'Flask', 'Docker', 'Google Cloud Run', 'GitHub'], link: 'https://github.com/Acne-Scan' }" class="bg-black overflow-hidden cursor-pointer group">
                         <div class="relative">
                             <img src="images/AcneScanApp.png" alt="AcneScan Project" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
                             <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300"></div>
@@ -188,7 +188,7 @@
                         </div>
                     </div>
                     <!-- Project Card 4: Anime Recommendation System -->
-                    <div @click="projectModalOpen = true; projectModalData = { title: 'Anime Recommendation System', desc: 'Developed a robust recommendation system using Content-Based and Collaborative Filtering. The system helps users discover new anime by analyzing metadata and user ratings, achieving high precision and low prediction error.', tech: ['Python', 'TensorFlow', 'Scikit-learn', 'Pandas'], link: 'https://github.com/NaufalHD12/anime-recommendation-system' }" class="bg-black overflow-hidden cursor-pointer group">
+                    <div @click="projectModalOpen = true; projectModalData = { title: 'Anime Recommendation System', desc: 'Developed a robust recommendation system using Content-Based and Collaborative Filtering. The system helps users discover new anime by analyzing metadata and user ratings, achieving high precision and low prediction error.', tech: ['Python', 'TensorFlow', 'Scikit-learn', 'Pandas', 'GitHub'], link: 'https://github.com/NaufalHD12/anime-recommendation-system' }" class="bg-black overflow-hidden cursor-pointer group">
                         <div class="relative">
                             <img src="images/AniRec.png" alt="Anime Recommendation System Project" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
                             <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300"></div>
@@ -199,7 +199,7 @@
                         </div>
                     </div>
                     <!-- Project Card 5: Student Performance Predictor -->
-                    <div @click="projectModalOpen = true; projectModalData = { title: 'Student Performance Predictor', desc: 'Built a regression model to accurately predict students’ final grades based on demographic, behavioral, and academic features. Identified key predictors of student performance to help improve academic outcomes, with CatBoost as the best performing model.', tech: ['Python', 'Scikit-learn', 'Pandas', 'CatBoost', 'XGBoost'], link: 'https://github.com/NaufalHD12/student-performance-predictor' }" class="bg-black overflow-hidden cursor-pointer group">
+                    <div @click="projectModalOpen = true; projectModalData = { title: 'Student Performance Predictor', desc: 'Built a regression model to accurately predict students’ final grades based on demographic, behavioral, and academic features. Identified key predictors of student performance to help improve academic outcomes, with CatBoost as the best performing model.', tech: ['Python', 'Scikit-learn', 'Pandas', 'CatBoost', 'XGBoost', 'GitHub'], link: 'https://github.com/NaufalHD12/student-performance-predictor' }" class="bg-black overflow-hidden cursor-pointer group">
                         <div class="relative">
                             <img src="images/StudPerf.png" alt="Student Performance Predictor Project" class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300">
                             <div class="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-20 transition-all duration-300"></div>
